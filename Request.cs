@@ -10,9 +10,11 @@ namespace Axosoft
 
         public Request()
         {
+            dotenv.net.DotEnv.Config(true, "../../.env");
             var envReader = new EnvReader();
-            this.clientID = envReader.GetStringValue("clientID");
-            this.clientSecret = envReader.GetStringValue("clientSecret");
+            this.clientID = envReader.GetStringValue("CLIENTID");
+            this.clientSecret = envReader.GetStringValue("CLIENTSECRET");
+            Console.WriteLine(this.clientID);
         }
 
         public Request(string clientID, string clientSecret)
