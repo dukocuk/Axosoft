@@ -1,0 +1,6 @@
+/Users/durankose/Projects/Axosoft/bin/Debug/Axosoft.exe
+/Users/durankose/Projects/Axosoft/bin/Debug/Axosoft.pdb
+/Users/durankose/Projects/Axosoft/obj/Debug/Axosoft.csprojAssemblyReference.cache
+/Users/durankose/Projects/Axosoft/obj/Debug/Axosoft.exe
+/Users/durankose/Projects/Axosoft/obj/Debug/Axosoft.pdb
+/Users/durankose/Projects/Axosoft/obj/Debug/Axosoft.csproj.CoreCompileInputs.cache
