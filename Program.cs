@@ -15,7 +15,7 @@ namespace Axosoft
 
             var requestTest = new Request();
 
-            
+            requestTest.getAllProjects();
 
             
             //Console.ReadKey();
