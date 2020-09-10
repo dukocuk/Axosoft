@@ -9,7 +9,7 @@ namespace Axosoft
     {
         private EnvReader envReader;
         Proxy axosoftClient;
-        private Result<IEnumerable<Project>> projectsResult;
+        private Result<Project> projectResult;
 
         public Request()
         {
@@ -24,7 +24,6 @@ namespace Axosoft
             };
 
             ObtainAccessToken();
-            getAllProjects();
             
         }
 
@@ -44,43 +43,19 @@ namespace Axosoft
             }
         }
 
-        public void getAllProjects()
-        {
-            // Example 1: we can get all projects
-            projectsResult = axosoftClient.Projects.Get();
-
-            if (!projectsResult.IsSuccessful)
-            {
-                // Wait for input before closing the console
-                Console.WriteLine("Unable to get projects. We're done here!");
-                Console.ReadKey(true);
-
-                return;
-            }
-
-            Console.WriteLine("Example 1 -> Projects:");
-
-            foreach (var project in projectsResult.Data)
-            {
-                Console.WriteLine(string.Format("Project Id: {0} - Name: {1}", project.Id, project.Name));
-            }
-
-            Console.WriteLine();
-        }
-
         public void createProject()
         {
             // Example 4: we can create a new project
             Console.WriteLine("Example 4 -> Create project:");
 
-            var project = axosoftClient.Projects.Create(new Project
+            projectResult = axosoftClient.Projects.Create(new Project
             {
                 Name = string.Format("Test Project API"),
                 //Description = string.Format("Created on: {0}", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")),
                 Description = "",
             });
 
-            if (!project.IsSuccessful)
+            if (!projectResult.IsSuccessful)
             {
                 // Wait for input before closing the console
                 Console.WriteLine("Unable to create a new project. We're done here!");
@@ -89,10 +64,33 @@ namespace Axosoft
                 return;
             }
 
+            Console.WriteLine("Created: " + projectResult.Data.Id);
+
         }
 
         public void deleteProject()
         {
+            // Example 4: we can create a new project
+            Console.WriteLine("Example 4 -> Create team:");
+
+
+            var deleteProjectResultest = axosoftClient.Projects.Delete(projectResult.Data.Id.Value, new Dictionary<string, object>
+            {
+                { "delete_items", true }
+            });
+
+            if (!deleteProjectResultest.IsSuccessful)
+            {
+                // Wait for input before closing the console
+                Console.WriteLine("Unable to delete a project. We're done here!");
+                
+
+                return;
+            }
+
+
+
+            Console.WriteLine("Deleted: " +projectResult.Data.Id);
 
         }
 

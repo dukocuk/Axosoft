@@ -15,8 +15,8 @@ namespace Axosoft
 
             var requestTest = new Request();
 
-            requestTest.getAllProjects();
             requestTest.createProject();
+            requestTest.deleteProject();
 
             
             //Console.ReadKey();
