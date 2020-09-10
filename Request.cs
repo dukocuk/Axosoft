@@ -73,7 +73,7 @@ namespace Axosoft
             
             Console.WriteLine("Delete project:");
 
-
+            
             var deleteProjectResultest = axosoftClient.Projects.Delete(projectResult.Data.Id.Value, new Dictionary<string, object>
             {
                 { "delete_items", true }
@@ -104,17 +104,18 @@ namespace Axosoft
            
             var userResultest = axosoftClient.Users.Update(new User
             {
-                FirstName = "TESTINGGGGGGGGGG",
+                FirstName = "TESTINGGYESYESYES",
                 LastName = "TESTINGG",
                 LoginId = "TESTINGG",
                 SecurityRoles = sec,
-                IsActive = true
+                IsActive = true,
+                Id = 482
             }
-            ,
-            new Dictionary<string, object>
-            {
-                { "id", 482 }
-            }
+            //,
+            //new Dictionary<string, object>
+            //{
+            //    { "Id", 482 }
+            //}
             );
 
             if (!userResultest.IsSuccessful)
