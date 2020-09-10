@@ -17,6 +17,7 @@ namespace Axosoft
 
             requestTest.createProject();
             requestTest.deleteProject();
+            requestTest.createUser();
 
             
             //Console.ReadKey();

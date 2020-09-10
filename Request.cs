@@ -46,7 +46,7 @@ namespace Axosoft
         public void createProject()
         {
             // Example 4: we can create a new project
-            Console.WriteLine("Example 4 -> Create project:");
+            Console.WriteLine("Create project:");
 
             projectResult = axosoftClient.Projects.Create(new Project
             {
@@ -70,8 +70,8 @@ namespace Axosoft
 
         public void deleteProject()
         {
-            // Example 4: we can create a new project
-            Console.WriteLine("Example 4 -> Create team:");
+            
+            Console.WriteLine("Delete project:");
 
 
             var deleteProjectResultest = axosoftClient.Projects.Delete(projectResult.Data.Id.Value, new Dictionary<string, object>
@@ -92,6 +92,41 @@ namespace Axosoft
 
             Console.WriteLine("Deleted: " +projectResult.Data.Id);
 
+        }
+
+        public void createUser()
+        {
+            Console.WriteLine("Create user:");
+
+            
+
+            var sec = new[] { new SecurityRole { IsAdmin=true} }; // int[]
+           
+            var userResultest = axosoftClient.Users.Update(new User
+            {
+                FirstName = "TESTINGGGGGGGGGG",
+                LastName = "TESTINGG",
+                LoginId = "TESTINGG",
+                SecurityRoles = sec,
+                IsActive = true
+            }
+            ,
+            new Dictionary<string, object>
+            {
+                { "id", 482 }
+            }
+            );
+
+            if (!userResultest.IsSuccessful)
+            {
+                // Wait for input before closing the console
+                Console.WriteLine("Unable to create user. We're done here!");
+
+
+                return;
+            }
+
+            Console.WriteLine("Created user: " + userResultest.Data.Id);
         }
 
 
