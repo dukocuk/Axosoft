@@ -98,25 +98,46 @@ namespace Axosoft
         {
             Console.WriteLine("Create user:");
 
+            var test = new List<SecurityRole>();
             
+            var sec = new SecurityRole { Name="Hold 34"} ; // int[]
 
-            var sec = new[] { new SecurityRole { IsAdmin=true} }; // int[]
+            test.Add(sec);
            
             var userResultest = axosoftClient.Users.Update(new User
             {
                 FirstName = "TESTINGGYESYESYES",
                 LastName = "TESTINGG",
                 LoginId = "TESTINGG",
-                SecurityRoles = sec,
+                Email = "duran.kse@gmail.com",
+                SecurityRoles = test,
                 IsActive = true,
-                Id = 482
+                Id = 482,
+                
+                
             }
-            //,
-            //new Dictionary<string, object>
-            //{
-            //    { "Id", 482 }
-            //}
             );
+
+
+
+            var secroleResult = axosoftClient.SecurityRoles.Get();
+
+            foreach (var i in secroleResult.Data)
+            {
+                Console.WriteLine(i.Name);
+            }
+
+
+
+
+            
+
+
+
+
+
+
+
 
             if (!userResultest.IsSuccessful)
             {
